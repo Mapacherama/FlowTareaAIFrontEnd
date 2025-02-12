@@ -26,7 +26,8 @@
   const handleLogin = async () => {
     await authStore.login(username.value, password.value);
     if (authStore.isAuthenticated) {
-      router.push('/');
+      router.push('/dashboard'); 
     }
   };
-  </script>  
+  </script>
+  
