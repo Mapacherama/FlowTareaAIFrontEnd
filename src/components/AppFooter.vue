@@ -23,7 +23,7 @@ import { ref } from 'vue';
 const currentYear = ref(new Date().getFullYear());
 
 const socialLinks = [
-  { title: 'GitHub', icon: 'mdi-github', href: 'https://https://github.com/Mapacherama' },
+  { title: 'GitHub', icon: 'mdi-github', href: 'https://github.com/Mapacherama' },
   { title: 'Instagram', icon: 'mdi-instagram', href: 'https://instagram.com/yourproject' },
   { title: 'LinkedIn', icon: 'mdi-linkedin', href: 'https://www.linkedin.com/in/jerome-tesselaar/' },
 ];
@@ -34,11 +34,15 @@ const socialLinks = [
 .footer-container {
   background: rgba(20, 25, 30, 0.9); /* Dark futuristic transparency */
   color: #e3f6f5; /* Soft contrast for eye comfort */
-  padding: 10px 20px;
+  padding: 15px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 -2px 10px rgba(0, 255, 170, 0.2);
+  height: 60px; /* Ensures a fixed height */
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 .footer-content {
