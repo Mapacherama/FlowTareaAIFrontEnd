@@ -53,7 +53,7 @@
   
     try {
       // Send registration request to backend
-      const response = await axios.post('http://127.0.0.1:8000/auth/register/', {
+      const response = await axios.post('http://127.0.0.1:8000/api/auth/register/', {
         username: username.value,
         password: password.value,
       });
