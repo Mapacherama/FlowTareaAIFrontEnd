@@ -40,6 +40,55 @@
   </script>
   
   <style scoped>
+  .full-height {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a0f14, #16222a); /* Deep space blue */
+  }
   
+  .card-container {
+    padding: 24px;
+    text-align: center;
+    max-width: 600px;
+    background: rgba(20, 25, 30, 0.9); /* Slight transparency for futuristic depth */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 255, 170, 0.2); /* Neon green accent */
+    color: #e3f6f5; /* Soft contrast text for eye comfort */
+  }
+  
+  .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00ff99; /* Tesla cyberpunk green */
+  }
+  
+  .card-subtitle {
+    font-size: 16px;
+    color: #a1eafb; /* Soft blue for a calming feel */
+  }
+  
+  .divider {
+    margin: 16px 0;
+    background-color: rgba(0, 255, 170, 0.5);
+  }
+  
+  .button-spacing {
+    margin-right: 8px;
+  }
+  
+  /* Button Styling */
+  .v-btn {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .v-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
+  }
   </style>
   
