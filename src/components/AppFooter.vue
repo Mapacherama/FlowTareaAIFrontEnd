@@ -1,77 +1,104 @@
 <template>
-  <v-footer class="footer-container">
-    <div class="footer-content">
-      <p class="footer-text">&copy; {{ currentYear }} FlowTrackAI — Built for productivity & reflection</p>
-      <div class="social-icons">
-        <a v-for="item in socialLinks" 
-           :key="item.title" 
-           :href="item.href" 
-           :title="item.title" 
-           class="social-link" 
-           rel="noopener noreferrer" 
-           target="_blank">
-          <v-icon :icon="item.icon" size="20" />
-        </a>
-      </div>
+  <v-footer height="50" app class="elon-footer">
+    <div class="d-flex align-center mx-auto">
+      <v-icon class="icon-glow" size="24">mdi-rocket-launch</v-icon>
+      <span class="ml-2 text-subtitle-1">Made with ❤️ in Vue.js and Vuetify</span>
+      <v-icon class="icon-glow ml-2" size="24">mdi-lightning-bolt</v-icon>
+    </div>
+
+    <div class="social-links">
+      <a
+        v-for="item in items"
+        :key="item.title"
+        :href="item.href"
+        :title="item.title"
+        class="mx-3 social-link"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <v-icon
+          :icon="item.icon"
+          size="20"
+          class="social-icon"
+        />
+      </a>
     </div>
   </v-footer>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
-
-const currentYear = ref(new Date().getFullYear());
-
-const socialLinks = [
-  { title: 'GitHub', icon: 'mdi-github', href: 'https://github.com/Mapacherama' },
-  { title: 'Instagram', icon: 'mdi-instagram', href: 'https://instagram.com/yourproject' },
-  { title: 'LinkedIn', icon: 'mdi-linkedin', href: 'https://www.linkedin.com/in/jerome-tesselaar/' },
+<script setup>
+const items = [
+  {
+    title: "Tesla",
+    icon: "mdi-car-electric",
+    href: "https://www.tesla.com/",
+  },
+  {
+    title: "SpaceX",
+    icon: "mdi-rocket",
+    href: "https://www.spacex.com/",
+  },
+  {
+    title: "Neuralink",
+    icon: "mdi-brain",
+    href: "https://neuralink.com/",
+  },
+  {
+    title: "Starlink",
+    icon: "mdi-satellite-variant",
+    href: "https://www.starlink.com/",
+  },
+  {
+    title: "Twitter (X)",
+    icon: "mdi-twitter",
+    href: "https://x.com/elonmusk",
+  },
+  {
+    title: "Boring Company",
+    icon: "mdi-drill",
+    href: "https://www.boringcompany.com/",
+  },
 ];
 </script>
 
 <style scoped>
-/* Minimalistic, futuristic, and clean footer */
-.footer-container {
-  background: rgba(20, 25, 30, 0.9); /* Dark futuristic transparency */
-  color: #e3f6f5; /* Soft contrast for eye comfort */
-  padding: 15px 20px;
+.elon-footer {
+  background: #000;
+  color: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 -2px 10px rgba(0, 255, 170, 0.2);
-  height: 60px; /* Ensures a fixed height */
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-}
-
-.footer-content {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-  text-align: center;
+  padding: 10px 20px;
+  position: relative;
 }
 
-.footer-text {
-  font-size: 14px;
-  color: #a1eafb;
-}
-
-.social-icons {
+.social-links {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  position: absolute;
+  right: 16px;
 }
 
-.social-link {
-  color: rgba(var(--v-theme-on-background), 0.6);
-  text-decoration: none;
-  transition: 0.3s ease-in-out;
+.social-link .v-icon {
+  color: #aaa;
+  transition: transform 0.3s ease-in-out, color 0.2s ease-in-out;
 }
 
-.social-link:hover {
-  color: #00ff99; /* Neon green accent */
-  transform: scale(1.1);
+.social-link .v-icon:hover {
+  color: #fff;
+  transform: scale(1.3);
+}
+
+.icon-glow {
+  color: #0ff;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(0, 255, 255, 1);
+  }
 }
 </style>
