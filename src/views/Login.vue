@@ -1,6 +1,6 @@
 <template>
     <v-container>
-      <v-card class="pa-5">
+      <v-card class="pa-5 login-card">
         <v-card-title>Login</v-card-title>
         <v-card-text>
           <!-- Error Message -->
@@ -13,10 +13,15 @@
             <v-text-field v-model="username" label="Username" required></v-text-field>
             <v-text-field v-model="password" label="Password" type="password" required></v-text-field>
             
-            <v-btn type="submit" color="primary" :loading="isLoading" :disabled="isLoading">
+            <v-btn type="submit" color="primary" :loading="isLoading" :disabled="isLoading" block>
               <v-icon left>mdi-login</v-icon> Login
             </v-btn>
           </v-form>
+  
+          <!-- Register Link -->
+          <div class="register-link">
+            <p>Don't have an account? <router-link to="/register">Sign up here</router-link></p>
+          </div>
         </v-card-text>
       </v-card>
     </v-container>
@@ -53,4 +58,26 @@
     }
   };
   </script>
+  
+  <style scoped>
+  .login-card {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .register-link {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .register-link a {
+    color: #00ff99;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline;
+  }
+  </style>
   
