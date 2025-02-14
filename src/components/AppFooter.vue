@@ -29,34 +29,19 @@
 <script setup>
 const items = [
   {
-    title: "Tesla",
-    icon: "mdi-car-electric",
-    href: "https://www.tesla.com/",
+    title: "LinkedIn",
+    icon: "mdi-linkedin",
+    href: "https://www.linkedin.com/in/jerome-tesselaar/",
   },
   {
-    title: "SpaceX",
-    icon: "mdi-rocket",
-    href: "https://www.spacex.com/",
+    title: "Instagram",
+    icon: "mdi-instagram",
+    href: "https://www.instagram.com/mapacherama/",
   },
   {
-    title: "Neuralink",
-    icon: "mdi-brain",
-    href: "https://neuralink.com/",
-  },
-  {
-    title: "Starlink",
-    icon: "mdi-satellite-variant",
-    href: "https://www.starlink.com/",
-  },
-  {
-    title: "Twitter (X)",
-    icon: "mdi-twitter",
-    href: "https://x.com/elonmusk",
-  },
-  {
-    title: "Boring Company",
-    icon: "mdi-drill",
-    href: "https://www.boringcompany.com/",
+    title: "GitHub",
+    icon: "mdi-github",
+    href: "https://github.com/Mapacherama",
   },
 ];
 </script>
