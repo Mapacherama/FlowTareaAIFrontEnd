@@ -19,10 +19,14 @@
         <v-card-title>Reflection History</v-card-title>
         <v-card-text>
           <v-list v-if="reflections.length > 0">
-            <v-list-item v-for="reflection in reflections" :key="reflection.id">
+            <v-list-item v-for="reflection in reflections" :key="reflection.id" class="reflection-item">
               <v-list-item-content>
-                <v-list-item-title>{{ formatDate(reflection.created_at) }}</v-list-item-title>
-                <v-list-item-subtitle>{{ reflection.content }}</v-list-item-subtitle>
+                <v-list-item-title class="reflection-date">
+                  {{ formatDate(reflection.created_at) }}
+                </v-list-item-title>
+                <v-list-item-subtitle class="reflection-text">
+                  {{ reflection.content }}
+                </v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action>
                 <v-btn icon color="error" @click="deleteReflection(reflection.id)">
@@ -113,6 +117,29 @@
     box-shadow: 0px 4px 10px rgba(0, 255, 170, 0.2);
     background: rgba(20, 25, 30, 0.9);
     color: #e3f6f5;
+  }
+  
+  /* Styling to keep reflections on a single line */
+  .reflection-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  /* Limit text length & ensure truncation */
+  .reflection-text {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 600px;
+  }
+  
+  /* Style date for clarity */
+  .reflection-date {
+    font-weight: bold;
+    margin-right: 15px;
   }
   
   .quick-actions {
