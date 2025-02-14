@@ -6,11 +6,17 @@
         <v-card-subtitle>Review your past insights and learn from them</v-card-subtitle>
       </v-card>
   
-      <!-- AI Insights -->
-      <v-card class="ai-insights-card">
-        <v-card-title>AI Summary</v-card-title>
+      <!-- Sorting Options -->
+      <v-card class="sorting-card">
+        <v-card-title>Sort by</v-card-title>
         <v-card-text>
-          <p>{{ aiSummary }}</p>
+          <v-select
+            v-model="sortOrder"
+            :items="['Newest First', 'Oldest First']"
+            label="Sorting Order"
+            @update:modelValue="sortReflections"
+            outlined
+          ></v-select>
         </v-card-text>
       </v-card>
   
@@ -18,8 +24,8 @@
       <v-card class="reflection-list-card">
         <v-card-title>Reflection History</v-card-title>
         <v-card-text>
-          <v-list v-if="reflections.length > 0">
-            <v-list-item v-for="reflection in reflections" :key="reflection.id" class="reflection-item">
+          <v-list v-if="sortedReflections.length > 0">
+            <v-list-item v-for="reflection in sortedReflections" :key="reflection.id" class="reflection-item">
               <v-list-item-content>
                 <v-list-item-title class="reflection-date">
                   {{ formatDate(reflection.created_at) }}
@@ -52,13 +58,13 @@
   </template>
   
   <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
+  import { ref, computed, onMounted } from 'vue';
   import { useRouter } from 'vue-router';
   import axios from 'axios';
   
   // Data
   const reflections = ref<{ id: number; content: string; created_at: string }[]>([]);
-  const aiSummary = ref("Reflections provide insight into your patterns. Keep journaling to unlock deeper understanding.");
+  const sortOrder = ref('Newest First'); // Default sorting order
   const router = useRouter();
   
   // Fetch Reflections from API
@@ -68,9 +74,24 @@
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       reflections.value = response.data;
+      sortReflections(); // Ensure sorting after fetching data
     } catch (error) {
       console.error("Error fetching reflections:", error);
     }
+  };
+  
+  // Computed Property: Sorted Reflections
+  const sortedReflections = computed(() => {
+    return [...reflections.value].sort((a, b) => {
+      return sortOrder.value === 'Newest First'
+        ? new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        : new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+    });
+  });
+  
+  // Function to handle sorting when selection changes
+  const sortReflections = () => {
+    reflections.value = [...sortedReflections.value];
   };
   
   // Delete a Reflection
@@ -109,7 +130,7 @@
   }
   
   .page-title-card,
-  .ai-insights-card,
+  .sorting-card,
   .reflection-list-card {
     margin-bottom: 20px;
     padding: 15px;
